@@ -39,8 +39,12 @@ export default function Home() {
     );
   };
 
-  const handleDeleteTask = () => {
+  const handleDeleteCompletedTasks = () => {
     setTasks((prevTasks) => prevTasks.filter((task) => !task.completed));
+  };
+
+  const handleDeleteTask = (id) => {
+    setTasks((prevTasks) => prevTasks.filter((task) => task.id !== id));
   };
 
   return (
@@ -68,6 +72,7 @@ export default function Home() {
           tasks={tasks}
           filter={filter}
           handleToggleTask={handleToggleTask}
+          handleDeleteTask={handleDeleteTask}
         />
         <div className="mt-4 flex justify-between items-center text-sm text-gray-400">
           <span>{tasks.length} items left</span>
@@ -92,7 +97,7 @@ export default function Home() {
             </button>
           </div>
           <button
-            onClick={() => handleDeleteTask()}
+            onClick={() => handleDeleteCompletedTasks()}
             className="text-gray-400 hover:text-white"
           >
             Clear Completed

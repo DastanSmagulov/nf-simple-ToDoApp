@@ -1,7 +1,7 @@
 import React from "react";
 import Image from "next/image";
 
-const TaskItem = ({ task, handleToggleTask }) => {
+const TaskItem = ({ task, handleToggleTask, handleDeleteTask }) => {
   // Component that shows each TaskItem
   return (
     <>
@@ -31,6 +31,15 @@ const TaskItem = ({ task, handleToggleTask }) => {
             {task.text}
           </span>
         </div>
+        <button className="text-gray-400 hover:text-white">
+          <Image
+            src={"/images/trash.svg"}
+            alt="Trash"
+            width={15}
+            height={15}
+            onClick={() => handleDeleteTask(task.id)}
+          />
+        </button>
       </li>
     </>
   );

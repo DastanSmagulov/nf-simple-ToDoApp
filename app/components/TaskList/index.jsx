@@ -2,7 +2,7 @@ import React from "react";
 import Image from "next/image";
 import TaskItem from "../TaskItem";
 
-const TaskList = ({ tasks, filter, handleToggleTask }) => {
+const TaskList = ({ tasks, filter, handleToggleTask, handleDeleteTask }) => {
   let filteredTasks = tasks.filter((task) => {
     if (filter === "all") {
       return task === task;
@@ -18,6 +18,7 @@ const TaskList = ({ tasks, filter, handleToggleTask }) => {
         <TaskItem
           task={task}
           handleToggleTask={handleToggleTask}
+          handleDeleteTask={handleDeleteTask}
           key={task.id}
         />
       ))}
