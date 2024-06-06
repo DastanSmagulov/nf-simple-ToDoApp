@@ -22,13 +22,17 @@ export default function Home() {
   }, [tasks]);
 
   const handleAddTask = () => {
-    const newTask = {
-      id: uuidv4().slice(0, 8),
-      text: inputText,
-      completed: false,
-    };
-    setTasks((prevTasks) => [...prevTasks, newTask]);
-    setInputText("");
+    if (!inputText) {
+      alert("You should write something in input");
+    } else {
+      const newTask = {
+        id: uuidv4().slice(0, 8),
+        text: inputText,
+        completed: false,
+      };
+      setTasks((prevTasks) => [...prevTasks, newTask]);
+      setInputText("");
+    }
   };
 
   const handleToggleTask = (id) => {
